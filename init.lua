@@ -1,0 +1,5 @@
+require('editor')
+require('colors')
+require('plugins')
+require('shortcuts')
+require('codestyle')
