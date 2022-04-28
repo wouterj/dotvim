@@ -33,7 +33,7 @@ o.hlsearch = true
 o.ignorecase = true
 o.smartcase = true
 
-o.foldmethod = 'expr'
-o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.g.php_folding = 1
+o.foldmethod = 'syntax'
 o.foldlevel = 1
 o.foldminlines = 5
