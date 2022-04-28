@@ -1,7 +1,12 @@
 require('telescope').setup({
     defaults = {
---      path_display = "truncate"
+        path_display = {"truncate"},
 --      horizontal = { width = 0.5, prompt_position = "top" },
+    },
+    pickers = {
+        find_files = {
+            find_command = { "fdfind", "--hidden", "--type", "file", ".", ".", "vendor/" }
+        },
     },
 })
 
