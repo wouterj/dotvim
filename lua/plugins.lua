@@ -48,7 +48,9 @@ return require('packer').startup(function()
     -- Linters
     use 'editorconfig/editorconfig-vim'
 
-    use 'dense-analysis/ale'
+    use {'dense-analysis/ale',
+        config = function() require'config.ale' end
+    }
 
     -----------------------------
     -- Languages
