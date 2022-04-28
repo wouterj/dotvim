@@ -31,7 +31,7 @@ return require('packer').startup(function()
             {'hrsh7th/cmp-buffer'},
             {'hrsh7th/cmp-nvim-lsp'}
         },
-        config = function() require'config.cmd' end
+        config = function() require'config.cmp' end
     }
 
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
