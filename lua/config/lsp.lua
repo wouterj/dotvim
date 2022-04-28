@@ -3,6 +3,8 @@ local lspconfig = require'lspconfig'
 -- Disable Diagnostcs globally
 vim.diagnostic.config({virtual_text = false})
 
+vim.api.nvim_set_keymap('n', '<Leader>c', '<cmd>CodeActionMenu<CR>', {noremap = true, silent = true});
+
 local on_attach = function(client)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local opts = { noremap=true, silent=true }
@@ -10,7 +12,6 @@ local on_attach = function(client)
     buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
     buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
     buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<Leader>cc', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
     -- Use LSP as the handler for omnifunc.
     vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

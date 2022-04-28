@@ -23,6 +23,7 @@ return require('packer').startup(function()
     }
 
     use {'neovim/nvim-lspconfig',
+        requires = {'weilbith/nvim-code-action-menu'},
         config = function() require'config.lsp' end
     }
     use {'hrsh7th/nvim-cmp',
