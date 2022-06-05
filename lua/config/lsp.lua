@@ -28,5 +28,8 @@ lspconfig.phpactor.setup{
 -- }
 
 lspconfig.ansiblels.setup{
-    root_dir=lspconfig.util.find_git_ancestor
+    root_dir=lspconfig.util.find_git_ancestor,
+    init_options = {
+        ["ansible.ansible.useFullyQualifiedCollectionNames"] = true,
+    }
 }
