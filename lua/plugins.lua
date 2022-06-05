@@ -35,6 +35,13 @@ return require('packer').startup(function()
         config = function() require'config.cmp' end
     }
 
+    use {'mfussenegger/nvim-dap',
+        requires = {
+            {'theHamsta/nvim-dap-virtual-text'}
+        },
+        config = function() require'config.dap' end
+    }
+
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use {'nvim-telescope/telescope.nvim',
         requires = {
