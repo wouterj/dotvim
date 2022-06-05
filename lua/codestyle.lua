@@ -1,5 +1,6 @@
--- TODO autocmd is added to Nvim 0.7 lua
-vim.cmd([[
-au BufRead,BufNewFile *.md setlocal textwidth=72
-au BufRead,BufNewFile *.rst setlocal textwidth=75
-]])
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = {"*.md", "*.rst", "*.rst.inc"},
+    callback = function()
+        vim.opt_local.textwidth = 75
+    end
+})
