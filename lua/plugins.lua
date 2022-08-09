@@ -36,9 +36,6 @@ return require('packer').startup(function()
     }
 
     use {'mfussenegger/nvim-dap',
-        requires = {
-            {'theHamsta/nvim-dap-virtual-text'}
-        },
         config = function() require'config.dap' end
     }
 
