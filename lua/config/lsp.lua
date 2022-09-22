@@ -33,3 +33,7 @@ lspconfig.ansiblels.setup{
         ["ansible.ansible.useFullyQualifiedCollectionNames"] = true,
     }
 }
+
+require'lspconfig'.tsserver.setup{
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue" }
+}
