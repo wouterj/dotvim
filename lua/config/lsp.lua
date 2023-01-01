@@ -1,7 +1,13 @@
 local lspconfig = require'lspconfig'
 
--- Disable Diagnostcs globally
-vim.diagnostic.config({virtual_text = false})
+vim.o.updatetime = 250
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
 
 vim.api.nvim_set_keymap('n', '<Leader>c', '<cmd>CodeActionMenu<CR>', {noremap = true, silent = true});
 
@@ -34,6 +40,6 @@ lspconfig.ansiblels.setup{
     }
 }
 
-require'lspconfig'.tsserver.setup{
+lspconfig.tsserver.setup{
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue" }
 }
