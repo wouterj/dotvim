@@ -1,5 +1,4 @@
 require'nvim-tree'.setup {
-    open_on_setup = true,
     git = { enable = false },
     renderer = {
         root_folder_modifier = ":t",
@@ -11,6 +10,11 @@ require'nvim-tree'.setup {
         }
     }
 }
+
+local function open_nvim_tree()
+  require("nvim-tree.api").tree.open()
+end
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 vim.api.nvim_set_keymap('', '<Leader>n', '<Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
 
