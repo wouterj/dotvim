@@ -66,4 +66,8 @@ return require('packer').startup(function()
         run = ':TSUpdate',
         config = function() require'config.treesitter' end
     }
+
+    use {'isobit/vim-caddyfile'}
+
+    use {'towolf/vim-helm'}
 end)
