@@ -21,6 +21,22 @@ local on_attach = function(client)
 
     -- Use LSP as the handler for omnifunc.
     vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    vim.api.nvim_create_autocmd("CursorHold", {
+      buffer = bufnr,
+      callback = function()
+        local opts = {
+          focusable = false,
+          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+          border = 'none',
+          source = 'always',
+          prefix = ' ',
+          scope = 'cursor',
+          header = '',
+        }
+        vim.diagnostic.open_float(nil, opts)
+      end
+    })
 end
 
 lspconfig.phpactor.setup{
