@@ -43,6 +43,8 @@ lspconfig.phpactor.setup{
     init_options = {
         ["language_server_completion.trim_leading_dollar"] = true,
     },
+    cmd = { 'phpactor', 'language-server', '-vvv' },
+    root_dir = lspconfig.util.root_pattern('vendor'),
     on_attach = on_attach
 }
 -- lspconfig.intelephense.setup{
@@ -59,3 +61,13 @@ lspconfig.ansiblels.setup{
 lspconfig.tsserver.setup{
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue" }
 }
+
+lspconfig.ccls.setup {
+  init_options = {
+    cache = {
+      directory = ".ccls-cache";
+    };
+  }
+}
+
+require'lspconfig'.pylsp.setup{}
