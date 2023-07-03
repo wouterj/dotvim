@@ -1,32 +1,21 @@
--- TODO find the motivation to rewrite this custom code in lua
-vim.cmd([[
-function! ChangeBackground(bg)
-    if a:bg == "dark"
-        set background=dark
-        colorscheme nord
-    else
-        set background=light
-        colorscheme nord
-    endif
-endfunction
+local colorFile = vim.fn.expand('~/.config/nvim/color')
+local function reload() 
+	vim.cmd("source ".. colorFile)
+    vim.cmd("colorscheme nord-typewriter")
+end
 
-let s:bg = readfile($HOME . "/.local/share/nvim/.vimbg")[0]
-if s:bg == "dark"
-    call ChangeBackground("dark")
-else
-    call ChangeBackground("light")
-endif
+local w = vim.loop.new_fs_event()
+local on_change
+local function watch_file(fname)
+	w:start(fname, {}, vim.schedule_wrap(on_change))
+end
+on_change = function()
+	reload()
+	-- Debounce: stop/start.
+	w:stop()
+	watch_file(colorFile)
+end
 
-function! ToggleBackground()
-    let l:bg = readfile($HOME . "/.local/share/nvim/.vimbg")[0]
-
-    if l:bg == "dark"
-        call ChangeBackground("light")
-        call writefile(["light"], $HOME . "/.local/share/nvim/.vimbg")
-    else
-        call ChangeBackground("dark")
-        call writefile(["dark"], $HOME . "/.local/share/nvim/.vimbg")
-    endif
-endfunction
-map <Leader>b :call ToggleBackground()<CR>
-]])
+-- reload vim config when background changes
+watch_file(colorFile)
+reload()
