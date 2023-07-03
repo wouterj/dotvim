@@ -1,7 +1,9 @@
 require('telescope').setup({
     defaults = {
         path_display = {"truncate"},
---      horizontal = { width = 0.5, prompt_position = "top" },
+        layout_config = {
+            horizontal = { preview_width = 0.45, prompt_position = "top" },
+        }
     },
     pickers = {
         find_files = {

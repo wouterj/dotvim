@@ -2,7 +2,7 @@ require'nvim-tree'.setup {
     git = { enable = false },
     renderer = {
         root_folder_modifier = ":t",
-        add_trailing = false,
+        add_trailing = true,
         group_empty = true,
         special_files = {},
         icons = {
