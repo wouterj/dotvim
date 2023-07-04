@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------
 -- TYPEWRITER NORD
 --
--- A (mostly) monochrome color theme for Neovim.
+-- A (mostly) monochrome color theme for Neovim, with a focus on types.
 --
 -- Based on [Typewriter.vim](https://github.com/logico/typewriter-vim)
 -- Inspired by [Nord Theme](https://www.nordtheme.com/)
@@ -40,7 +40,7 @@ if vim.o.background == "dark" then
     }
 else
     colors = {
-        bg     = "#d8dee9",
+        bg     = "#e5e9f0",
         cursor = "#88c0d0",
         var    = "#5e81ac",
 
