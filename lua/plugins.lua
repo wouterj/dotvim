@@ -60,14 +60,12 @@ return require('packer').startup(function()
     -- Languages
     use {'chr4/nginx.vim', ft = {'nginx'} }
     use {'robbles/logstash.vim', ft = {'logstash'} }
+    use {'isobit/vim-caddyfile'}
+    use {'towolf/vim-helm'}
 
     use {'nvim-treesitter/nvim-treesitter',
         requires = {'nvim-treesitter/playground', 'nvim-treesitter/nvim-treesitter-textobjects'},
         run = ':TSUpdate',
         config = function() require'config.treesitter' end
     }
-
-    use {'isobit/vim-caddyfile'}
-
-    use {'towolf/vim-helm'}
 end)

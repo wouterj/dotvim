@@ -70,4 +70,6 @@ lspconfig.ccls.setup {
   }
 }
 
-require'lspconfig'.pylsp.setup{}
+lspconfig.pylsp.setup{}
+
+require'fidget'.setup{}

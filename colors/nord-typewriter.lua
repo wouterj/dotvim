@@ -153,7 +153,9 @@ local groups = {
     ["@type.qualifier"] = { italic = true },
     ["@constructor"]    = { link = "Type" },
     ["@variable"]       = { fg = colors.var },
+    ["@attribute"]      = { italic = true },
     ["@constant.builtin"] = { link = "Type" },
+    ["@text.strong"] = { bold = true },
 }
 
 vim.cmd.hi("clear")

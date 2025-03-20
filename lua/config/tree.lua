@@ -11,12 +11,19 @@ require'nvim-tree'.setup {
     }
 }
 
-local function open_nvim_tree()
-  require("nvim-tree.api").tree.open()
+local function open_nvim_tree(data)
+    local no_file = data.file == "" and vim.bo[data.buf].buftype == ""
+
+    if data.file:match('\\.git/') then
+        return
+    end
+
+    require("nvim-tree.api").tree.toggle({ focus = no_file, find_file = true })
 end
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
-vim.api.nvim_set_keymap('', '<Leader>n', '<Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<Leader>n', '<Cmd>NvimTreeFindFile<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<Leader>m', '<Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd("BufEnter", {
   nested = true,
