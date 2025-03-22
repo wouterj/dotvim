@@ -1,7 +1,7 @@
-local subscribe = require('el.subscribe')
-local extensions = require('el.extensions')
-local sections = require('el.sections')
 local generator = function(window, buffer)
+    local extensions = require('el.extensions')
+    local sections = require('el.sections')
+
     if buffer.filetype ~= "NvimTree" then
         return {
             extensions.gen_mode({ format_string = " %s " }),
@@ -9,7 +9,7 @@ local generator = function(window, buffer)
             '%f %m',
             sections.split,
             sections.highlight("StatusLineBranch", '%y '),
-            sections.highlight("StatusLineBranch", subscribe.buf_autocmd(
+            sections.highlight("StatusLineBranch", require('el.subscribe').buf_autocmd(
                 "el_git_branch",
                 "BufEnter",
                 function(window, buffer)
@@ -27,4 +27,14 @@ local generator = function(window, buffer)
     end
 end
 
-require('el').setup({generator = generator})
+return {
+    {
+        'tjdevries/express_line.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim'
+        },
+        opts = {
+            generator = generator
+        }
+    }
+}

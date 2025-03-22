@@ -7,8 +7,6 @@ map('', '<Leader>p', '"+p', silentnoremap)
 
 map('n', ',', ':noh<CR>', silentnoremap)
 
-map('n', '<Leader>m', '/^\\(<<<<<<<\\\\|=======\\\\|>>>>>>>\\)\\( \\\\|$\\)<CR>', silentnoremap)
-
 map('', '<c-k>', ':exe "resize " . (winheight(0) * 7/6)<CR>', silentnoremap)
 map('', '<c-j>', ':exe "resize " . (winheight(0) * 5/6)<CR>', silentnoremap)
 map('', '<c-h>', ':exe "vertical resize " . (winwidth(0) * 7/6)<CR>', silentnoremap)
