@@ -14,6 +14,13 @@ return {
               return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
 
+            vim.o.updatetime = 500
+            vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
+                callback = function()
+                    cmp.complete()
+                end,
+            })
+
             cmp.setup {
                 mapping = {
                     ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -44,9 +51,17 @@ return {
                     end,
                 },
                 sources = {
+                    -- { name = 'minuet' },
+                    { name = 'nvim_lsp' },
                     { name = 'buffer' },
                     { name = 'ultisnips' },
-                    { name = 'nvim_lsp' }
+                },
+                performance = {
+                    -- It is recommended to increase the timeout duration due to
+                    -- the typically slower response speed of LLMs compared to
+                    -- other completion sources. This is not needed when you only
+                    -- need manual completion.
+                    fetching_timeout = 2000,
                 },
                 formatting = {
                     format = lspkind.cmp_format({

@@ -3,7 +3,8 @@ return {
         'dense-analysis/ale',
         init = function()
             -- disable LSP (nvim-lspconfig is used)
-            -- vim.g.ale_disable_lsp = true
+            vim.g.ale_disable_lsp = true
+            vim.g.ale_linters_ignore = {'phpstan'}
 
             vim.g.ale_echo_msg_format = '[%linter%] %type%: %s'
             vim.g.ale_echo_cursor = 0
