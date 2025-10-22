@@ -48,7 +48,7 @@ return {
                 init_options = {
                     ["language_server_completion.trim_leading_dollar"] = true,
                 },
-                cmd = { 'php', '-d', '\'error_reporting=E_ALL&~E_DEPRECATED\'', '/Users/wouter.de.jong/opt/phpactor/bin/phpactor', 'language-server', '-vvv' },
+                cmd = { 'php', '-d', '\'error_reporting=E_ALL&~E_DEPRECATED\'', vim.g.phpactor_bin, 'language-server', '-vvv' },
                 on_attach = on_attach
             })
             vim.lsp.enable('phpactor')

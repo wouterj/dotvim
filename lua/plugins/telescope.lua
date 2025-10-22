@@ -20,7 +20,7 @@ return {
                 },
                 pickers = {
                     find_files = {
-                        find_command = { "fd", "--hidden", "--exclude", ".git", "--type", "file", ".", ".", "vendor/" }
+                        find_command = { vim.g.fdfind_bin, "--hidden", "--exclude", ".git", "--type", "file", ".", ".", "vendor/" }
                     },
                 },
             })
