@@ -1,3 +1,4 @@
+require('vars')
 require('editor')
 require('colors')
 require('shortcuts')
